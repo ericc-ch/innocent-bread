@@ -2,9 +2,11 @@
   "compilerOptions": {
     // Language and Environment
     "target": "ESNext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "allowJs": true,
+    "jsx": "preserve",
+    "jsxImportSource": "@opentui/solid",
 
     // Modules
     "moduleResolution": "bundler",
