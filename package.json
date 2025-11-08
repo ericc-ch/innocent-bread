@@ -1,0 +1,69 @@
+{
+  "name": "pkg-placeholder",
+  "version": "0.0.0",
+  "description": "_description_",
+  "keywords": [
+    "pkg-placeholder"
+  ],
+  "homepage": "https://github.com/ericc-ch/pkg-placeholder",
+  "bugs": "https://github.com/ericc-ch/pkg-placeholder/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ericc-ch/pkg-placeholder.git"
+  },
+  "author": {
+    "name": "Erick Christian",
+    "email": "erickchristian48@gmail.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/main.d.ts",
+      "default": "./dist/main.js"
+    }
+  },
+  "bin": {
+    "pkg-placeholder": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "lint": "eslint --cache",
+    "prepack": "pnpm run build",
+    "prepare": "simple-git-hooks",
+    "release": "bumpp && pnpm publish --access public",
+    "start": "tsx src/cli.ts",
+    "test": "vitest",
+    "typecheck": "tsc"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "lint-staged": {
+    "*": "pnpm run lint --fix"
+  },
+  "dependencies": {
+    "citty": "^0.1.6"
+  },
+  "devDependencies": {
+    "@echristian/eslint-config": "^0.0.54",
+    "@types/node": "^24.3.0",
+    "bumpp": "^10.2.3",
+    "eslint": "^9.34.0",
+    "lint-staged": "^16.1.5",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.14.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "packageManager": "pnpm@10.15.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "simple-git-hooks"
+    ]
+  }
+}
