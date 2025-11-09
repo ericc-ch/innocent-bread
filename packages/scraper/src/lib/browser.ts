@@ -1,13 +1,13 @@
 import * as playwright from "playwright"
 import path from "node:path"
 
-const getBrowserPath = () =>
-  Bun.$`which chromium`.text().then((output) => output.trim())
+// Does this even work lmao
+const getBrowserPath = () => Bun.which("chromium") ?? "chromium"
 
 const USER_DATA_DIR = path.join(process.cwd(), "./.scraper-profile/")
 
 export const createContext = async () =>
   playwright.chromium.launchPersistentContext(USER_DATA_DIR, {
-    executablePath: await getBrowserPath(),
+    executablePath: getBrowserPath(),
     headless: false,
   })
