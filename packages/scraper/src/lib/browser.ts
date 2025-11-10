@@ -6,8 +6,10 @@ const getBrowserPath = () => Bun.which("chromium") ?? "chromium"
 
 const USER_DATA_DIR = path.join(process.cwd(), "./.scraper-profile/")
 
-export const createContext = async () =>
-  playwright.chromium.launchPersistentContext(USER_DATA_DIR, {
+export const browserContext = await playwright.chromium.launchPersistentContext(
+  USER_DATA_DIR,
+  {
     executablePath: getBrowserPath(),
     headless: false,
-  })
+  },
+)
